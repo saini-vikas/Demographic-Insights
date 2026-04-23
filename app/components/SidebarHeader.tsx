@@ -2,7 +2,7 @@
 import { Globe, PanelLeft } from "lucide-react"
 import { useSidebar } from "@/components/ui/sidebar"
 
-function SidebarHeaderContent() {
+export function SidebarHeaderContent() {
   const { open, setOpen } = useSidebar()
 
   return (
