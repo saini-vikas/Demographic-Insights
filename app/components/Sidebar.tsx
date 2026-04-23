@@ -1,13 +1,11 @@
 import { Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar"
 import { Moon, Sun, Globe, Home, BarChart, Settings } from "lucide-react"
+import SidebarHeader from "./SidebarHeader"
 const AppSidebar = () => {
     return (
         <Sidebar variant="floating" collapsible="icon">
             <SidebarHeader>
-            <div className="flex items-center gap-2 px-2 py-1">
-              <Globe className="h-5 w-5" />
-              <span className="font-semibold text-sm">Insights</span>
-            </div>
+            <SidebarHeader/>
           </SidebarHeader>
             <SidebarContent>
         <SidebarMenu>
