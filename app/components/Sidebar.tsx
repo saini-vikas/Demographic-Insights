@@ -1,5 +1,5 @@
 import { Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar"
-import { Moon, Sun, Globe } from "lucide-react"
+import { Moon, Sun, Globe, Home, BarChart, Settings } from "lucide-react"
 const AppSidebar = () => {
     return (
         <Sidebar variant="floating" collapsible="icon">
