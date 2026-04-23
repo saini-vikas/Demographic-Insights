@@ -1,3 +1,4 @@
+"use client"
 import { Globe, PanelLeft } from "lucide-react"
 import { useSidebar } from "@/components/ui/sidebar"
 
