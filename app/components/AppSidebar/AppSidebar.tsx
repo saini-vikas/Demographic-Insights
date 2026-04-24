@@ -8,7 +8,7 @@ const AppSidebar = () => {
                 <SidebarHeaderContent />
             </SidebarHeader>
             <SidebarContent>
-                <SidebarMenu className="flex flex-col m-2 gap-4">
+                <SidebarMenu className="flex flex-col mx-2 my-3 gap-4">
                     <SidebarMenuItem>
                         <SidebarMenuButton>
                             <Home />

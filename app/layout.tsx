@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip"
 import "./globals.css";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import AppSidebar from "./components/AppSidebar/Sidebar";
+import AppSidebar from "./components/AppSidebar/AppSidebar";
 import { MobileSidebarTrigger } from "./components/AppSidebar/MobileSidebarTrigger";
 
 
@@ -27,9 +27,9 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} h-full antialiased`}
+      className={`${inter.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-neutral-100">
+      <body className="flex bg-neutral-100">
         <SidebarProvider>
           <TooltipProvider>
             <div className="fixed left-5 top-5 flex flex-row justify-center items-center gap-5 md:hidden">
@@ -37,7 +37,7 @@ export default function RootLayout({
               <span className="font-bold text-lg">Demographic Insights</span>
             </div>
             <AppSidebar />
-            <main>
+            <main className="flex w-full h-full">
               {children}
             </main>
           </TooltipProvider>
