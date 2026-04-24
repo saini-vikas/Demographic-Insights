@@ -1,7 +1,7 @@
 
 const AppGrid = () => {
     return (
-        <div className='grid grid-cols-3 md:grid-cols-3 gap-4 w-full h-full'>
+        <div className='grid grid-cols-3 md:grid-cols-3 gap-6 w-full h-full'>
             <div className="flex border bg-white rounded-lg p-2 "></div>
             <div className="flex border bg-white rounded-lg p-2 "></div>
             <div className="flex border bg-white rounded-lg p-2 "></div>
