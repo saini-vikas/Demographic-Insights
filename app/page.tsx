@@ -1,4 +1,4 @@
-import AppSidebar from "./components/Sidebar";
+import AppSidebar from "./components/AppSidebar/Sidebar";
 
 export default function Home() {
   return (

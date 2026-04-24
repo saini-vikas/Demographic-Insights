@@ -1,18 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip"
 import "./globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import AppSidebar from "./components/Sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import AppSidebar from "./components/AppSidebar/Sidebar";
+import { MobileSidebarTrigger } from "./components/AppSidebar/MobileSidebarTrigger";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -29,15 +27,18 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-neutral-100">
         <SidebarProvider>
           <TooltipProvider>
+            <div className="fixed left-5 top-5 flex flex-row justify-center items-center gap-5 md:hidden">
+              <MobileSidebarTrigger />
+              <span className="font-bold text-lg">Demographic Insights</span>
+            </div>
             <AppSidebar />
             <main>
               {children}
-              <SidebarTrigger />
             </main>
           </TooltipProvider>
         </SidebarProvider>
