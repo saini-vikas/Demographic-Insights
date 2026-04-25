@@ -12,21 +12,21 @@ const AppSidebar = () => {
                     <SidebarMenuItem>
                         <SidebarMenuButton>
                             <Home />
-                            <span className="max-sm:text-md">Home</span>
+                            <span className="max-md:text-lg">Home</span>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
 
                     <SidebarMenuItem>
                         <SidebarMenuButton>
                             <BarChart />
-                            <span>World</span>
+                            <span className="max-md:text-lg">World</span>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
 
                     <SidebarMenuItem>
                         <SidebarMenuButton>
                             <BarChart />
-                            <span>Compare</span>
+                            <span className="max-md:text-lg">Compare</span>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
 
@@ -38,7 +38,7 @@ const AppSidebar = () => {
                     <SidebarMenuItem>
                         <SidebarMenuButton>
                             <Settings />
-                            <span>Settings</span>
+                            <span className="max-md:text-lg">Settings</span>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                 </SidebarMenu>

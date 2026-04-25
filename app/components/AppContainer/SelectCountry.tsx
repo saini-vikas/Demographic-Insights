@@ -26,19 +26,19 @@ export function SelectCountry({ countries }: SelectCountryProps) {
         <Combobox items={countries} value={value} onValueChange={setValue}>
             <ComboboxTrigger
                 render={
-                    <Button variant="outline" className="w-60 justify-between font-normal">
+                    <Button variant="outline" className="w-60 justify-between font-medium text-md py-3! px-4">
                         <ComboboxValue placeholder="Select a country" />
                     </Button>
                 }
             />
 
             <ComboboxContent>
-                <ComboboxInput showTrigger={false} placeholder="Search country..." />
-                <ComboboxEmpty>No items found.</ComboboxEmpty>
+                <ComboboxInput showTrigger={false} className="text-md" placeholder="Search country..." />
+                <ComboboxEmpty className="text-md">No items found.</ComboboxEmpty>
 
-                <ComboboxList>
+                <ComboboxList >
                     {(item) => (
-                        <ComboboxItem key={item.id} value={item.name}>
+                        <ComboboxItem className="text-md" key={item.id} value={item.name}>
                             {item.name}
                         </ComboboxItem>
                     )}
