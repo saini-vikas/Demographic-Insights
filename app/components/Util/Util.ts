@@ -1,0 +1,80 @@
+const topics = [
+  {
+    id: 0,
+    name: "Not applicable",
+    shortName: "NA",
+    sortOrder: 0,
+  },
+  {
+    id: 1,
+    name: "Population",
+    shortName: "Pop",
+    sortOrder: 1,
+  },
+  {
+    id: 2,
+    name: "Fertility",
+    shortName: "Fert",
+    sortOrder: 2,
+  },
+  {
+    id: 3,
+    name: "Mortality",
+    shortName: "Mort",
+    sortOrder: 3,
+  },
+  {
+    id: 4,
+    name: "International Migration",
+    shortName: "iMigration",
+    sortOrder: 4,
+  },
+  {
+    id: 5,
+    name: "Family Planning",
+    shortName: "FP",
+    sortOrder: 5,
+  },
+  {
+    id: 6,
+    name: "Marital Status",
+    shortName: "MarStat",
+    sortOrder: 6,
+  },
+  {
+    id: 7,
+    name: "All Components",
+    shortName: "All",
+    sortOrder: 7,
+  },
+  {
+    id: 8,
+    name: "Child Mortality",
+    shortName: "IGME",
+    sortOrder: 8,
+  },
+  {
+    id: 9,
+    name: "Maternal Mortality",
+    shortName: "MMEIG",
+    sortOrder: 9,
+  },
+  {
+    id: 10,
+    name: "Urbanization - Population - International definition",
+    shortName: "UrbanPopIntDef",
+    sortOrder: 10,
+  },
+  {
+    id: 11,
+    name: "Urbanization - Surface area - International definition",
+    shortName: "UrbanSurIntDef",
+    sortOrder: 11,
+  },
+  {
+    id: 12,
+    name: "Urbanization - Population - National definitions",
+    shortName: "UrbanLand",
+    sortOrder: 12,
+  },
+];

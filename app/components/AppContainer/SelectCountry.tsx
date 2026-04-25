@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { Country } from "../ServerComponents/Countries"
 import {
     Combobox,
     ComboboxContent,
@@ -13,16 +14,20 @@ import {
     ComboboxValue,
 } from "@/components/ui/combobox"
 
+interface SelectCountryProps {
+    countries: Country[]
+}
 
-export function SelectCountry({ countries }: { countries: any[] }) {
-    const [value, setValue] = useState(countries[0])
+
+export function SelectCountry({ countries }: SelectCountryProps) {
+    const [value, setValue] = useState<Country | null>(null)
 
     return (
         <Combobox items={countries} value={value} onValueChange={setValue}>
             <ComboboxTrigger
                 render={
                     <Button variant="outline" className="w-60 justify-between font-normal">
-                        <ComboboxValue placeholder="Select country" />
+                        <ComboboxValue placeholder="Select a country" />
                     </Button>
                 }
             />
@@ -33,8 +38,8 @@ export function SelectCountry({ countries }: { countries: any[] }) {
 
                 <ComboboxList>
                     {(item) => (
-                        <ComboboxItem key={item.code} value={item}>
-                            {item.label}
+                        <ComboboxItem key={item.id} value={item.name}>
+                            {item.name}
                         </ComboboxItem>
                     )}
                 </ComboboxList>

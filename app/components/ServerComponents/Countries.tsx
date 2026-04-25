@@ -1,15 +1,19 @@
-type Country = {
-    name: {
-        common: string
-    }
-    cca2: string
-    region: string
+export type Country = {
+    id: number,
+    name: string,
+    ios2: string,
+    ios3: string,
+    latitude: number,
+    longitude: number,
 }
 
 export default async function fetchCountries() {
     const res = await fetch(
-        "https://restcountries.com/v3.1/all?fields=name,cca2,region",
+        "https://population.un.org/dataportalapi/api/v1/locations?pageSize=300",
         {
+            headers: {
+                "Authorization": `Bearer ${process.env.API_KEY}`,
+            },
             cache: "force-cache", // or "no-store" if you want always fresh data
         }
     )
@@ -18,13 +22,12 @@ export default async function fetchCountries() {
         throw new Error("Failed to fetch countries")
     }
 
-    const data: Country[] = await res.json()
+    const response = await res.json()
 
-    const countries = data.map((c) => ({
-        code: c.cca2.toLowerCase(),
-        label: c.name.common,
-        value: c.name.common.toLowerCase().replace(/\s/g, "-"),
-        continent: c.region,
+    const countries = response.data.map((c: Country) => ({
+        id: c.id,
+        name: c.name,
+
     }))
 
     return countries

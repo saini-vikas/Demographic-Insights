@@ -1,4 +1,4 @@
-import { Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar"
+import { Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarFooter } from "@/components/ui/sidebar"
 import { Moon, Sun, Globe, Home, BarChart, Settings } from "lucide-react"
 import { SidebarHeaderContent } from "./SidebarHeader"
 const AppSidebar = () => {
@@ -19,10 +19,22 @@ const AppSidebar = () => {
                     <SidebarMenuItem>
                         <SidebarMenuButton>
                             <BarChart />
-                            <span>Analytics</span>
+                            <span>World</span>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
 
+                    <SidebarMenuItem>
+                        <SidebarMenuButton>
+                            <BarChart />
+                            <span>Compare</span>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+
+                </SidebarMenu>
+            </SidebarContent>
+
+            <SidebarFooter className="mb-3">
+                <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton>
                             <Settings />
@@ -30,8 +42,9 @@ const AppSidebar = () => {
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                 </SidebarMenu>
-            </SidebarContent>
-        </Sidebar>
+
+            </SidebarFooter>
+        </Sidebar >
     )
 }
 

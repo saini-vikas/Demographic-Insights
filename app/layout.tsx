@@ -32,9 +32,8 @@ export default function RootLayout({
       <body className="flex bg-gray-50">
         <SidebarProvider>
           <TooltipProvider>
-            <div className="fixed left-5 top-5 flex flex-row justify-center items-center gap-5 md:hidden">
+            <div className="fixed left-3 top-3  flex flex-row justify-center items-center gap-5 md:hidden">
               <MobileSidebarTrigger />
-              <span className="font-bold text-lg">Demographic Insights</span>
             </div>
             <AppSidebar />
             <main className="flex w-full h-full">
