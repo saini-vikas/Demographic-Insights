@@ -1,6 +1,7 @@
 import SelectCountry from "./SelectCountry"
 import AppGrid from "../AppGrid/AppGrid"
 import fetchCountries from "../ServerComponents/Countries"
+import fetchIndicators from "../ServerComponents/Indicator"
 
 export default async function AppContainer() {
     const countries = await fetchCountries()
