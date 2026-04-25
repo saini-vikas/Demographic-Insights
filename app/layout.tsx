@@ -29,7 +29,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} antialiased`}
     >
-      <body className="flex bg-gray-50">
+      <body className="flex bg-[#f0f4f8]">
         <SidebarProvider>
           <TooltipProvider>
             <div className="fixed left-3 top-3  flex flex-row justify-center items-center gap-5 md:hidden">
