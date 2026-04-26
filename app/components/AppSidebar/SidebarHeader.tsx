@@ -8,8 +8,8 @@ export function SidebarHeaderContent() {
   return (
     <div className="relative flex items-center h-8">
       <div className="flex items-center gap-2 px-1.5">
-        <div className="group/globe flex relative gap-3">
-          {open === true ? <Globe className="h-5 w-5 transition-opacity" /> : <Globe className="h-5 w-5 transition-opacity group-hover/globe:opacity-0" />}
+        <div className="group/globe flex items-center relative gap-3">
+          {open ? <Globe className="h-5 w-5 transition-opacity" /> : <Globe className="h-5 w-5 transition-opacity group-hover/globe:opacity-0" />}
           <span className="font-bold text-lg md:hidden">Demographic Insights</span>
           {!open && (
             <PanelLeft

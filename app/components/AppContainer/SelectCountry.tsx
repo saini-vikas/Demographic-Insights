@@ -1,8 +1,5 @@
-"use client"
-
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Country } from "../ServerComponents/Countries"
+import type { Country } from "../ServerComponents/Countries"
 import {
     Combobox,
     ComboboxContent,
@@ -15,15 +12,16 @@ import {
 } from "@/components/ui/combobox"
 
 interface SelectCountryProps {
-    countries: Country[]
+    countries: Country[],
+    selectedCountry: string,
+    setSelectedCountry: (country: string) => void
 }
 
 
-export function SelectCountry({ countries }: SelectCountryProps) {
-    const [value, setValue] = useState<Country | null>(null)
 
+export function SelectCountry({ countries, selectedCountry, setSelectedCountry }: SelectCountryProps) {
     return (
-        <Combobox items={countries} value={value} onValueChange={setValue}>
+        <Combobox items={countries} value={selectedCountry || "Select a country"} onValueChange={(value) => setSelectedCountry(value ?? "")}>
             <ComboboxTrigger
                 render={
                     <Button variant="outline" className="w-60 justify-between font-medium text-md py-3! px-4">

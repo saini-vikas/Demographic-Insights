@@ -1,0 +1,47 @@
+"use server";
+
+export type Data = {
+  indicator: string;
+  timeLabel: string;
+  value: number;
+};
+
+export type MigrationRate = {
+  data: Data[] | undefined;
+  title: string | undefined;
+  description: string | undefined;
+  location: string | undefined;
+  locationId: number | undefined;
+};
+
+export default async function fetchMigrationRate(countryId: number) {
+  const url = `https://population.un.org/dataportalapi/api/v1/data/indicators/66/locations/${countryId}?startYear=2016&endYear=2026&sexes=3&variants=4`;
+
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${process.env.API_KEY}`,
+      Accept: "application/json",
+    },
+    next: { revalidate: 3600 * 24 }, // Revalidate every 24 hours
+    cache: "force-cache", // or "no-store" if you want always fresh data
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch total population data");
+  }
+
+  const response = await res.json();
+
+  const migrationRate = response.data.map((c: Data) => ({
+    indicator: c.indicator,
+    timeLabel: c.timeLabel,
+    value: parseFloat(c.value.toString()),
+  }));
+  return {
+    data: migrationRate,
+    title: response.data[0]?.indicator,
+    description: response.data[0]?.indicatorDisplayName,
+    location: response.data[0]?.location,
+    locationId: response.data[0]?.locationId,
+  };
+}
