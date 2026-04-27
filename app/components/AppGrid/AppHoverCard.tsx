@@ -19,7 +19,7 @@ export function InfoTitle({ title, description, className = "" }: InfoTitleProps
         <HoverCard openDelay={100} closeDelay={100} >
             <HoverCardTrigger asChild>
                 <div className={`flex items-center gap-2 cursor-help w-fit group ${className}`}>
-                    <h2 className="text-lg font-semibold text-gray-800 border-gray-300 group-hover:border-gray-500 transition-colors">
+                    <h2 className="text-md font-semibold text-gray-700 border-gray-300 group-hover:border-gray-500 transition-colors">
                         {title}
                     </h2>
                     <Info className="w-4 h-4 text-muted-foreground opacity-50 group-hover:opacity-100" />

@@ -10,24 +10,24 @@ const PopulationChangeChart = ({ data, title, description }: PopulationChange) =
         return `${(value / 1000000).toFixed(1)}M`;
     };
     return (
-        <div className="flex flex-col items-center border bg-white min-h-40 p-2 rounded-lg col-span-3 lg:col-span-2">
+        <div className="flex flex-col items-center border bg-white h-60 xl:min-h-84 p-2 rounded-lg col-span-3 lg:col-span-2">
             <InfoTitle title={title as string} description={description} />
             <ResponsiveContainer width="100%" height="100%" className="ml-7">
                 <LineChart
                     data={data}
                     margin={{
-                        top: 20,
-                        right: 40,
-                        left: 30,
-                        bottom: 20,
+                        top: 10,
+                        right: 30,
+                        left: 20,
+                        bottom: 10,
                     }}
                 >
                     <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border-3)" />
                     <XAxis dataKey="timeLabel" tick={{ fontSize: 12 }} stroke="var(--color-text-3)" >
-                        <Label value="Year" offset={-10} className='font-semibold text-sm' position="insideBottom" fill="var(--color-text-3)" />
+                        <Label value="Year" offset={-10} className='font-semibold text-xs' position="insideBottom" fill="var(--color-text-3)" />
                     </XAxis>
                     <YAxis width="auto" tick={{ fontSize: 12 }} tickFormatter={formatYAxis} stroke="var(--color-text-3)">
-                        <Label value="Population Change" angle={-90} offset={-20} position="insideLeft" className='font-semibold text-sm' fill="var(--color-text-3)" style={{ textAnchor: 'middle' }} />
+                        <Label value="Population Change" angle={-90} offset={-10} position="insideLeft" className='font-semibold text-xs' fill="var(--color-text-3)" style={{ textAnchor: 'middle' }} />
                     </YAxis>
                     <Tooltip
 
@@ -39,7 +39,7 @@ const PopulationChangeChart = ({ data, title, description }: PopulationChange) =
                             borderColor: 'var(--color-border-2)',
                             borderRadius: '15px',
                         }}
-                        formatter={(value: any) => [`${(value / 1000000).toFixed(2)} Million`, 'Population']}
+                        formatter={(value: unknown) => [`${(Number(value) / 1000000).toFixed(2)} Million`, 'Population']}
                     />
                     <legend />
                     <Line

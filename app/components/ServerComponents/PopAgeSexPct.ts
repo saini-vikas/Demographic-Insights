@@ -3,10 +3,14 @@
 export type Data = {
   indicator: string;
   timeLabel: string;
+  ageLabel?: string;
+  ageStart?: number;
+  sexLabel?: string;
+  sexId?: number;
   value: number;
 };
 
-export type PopulationChange = {
+export type PopAgeSexPct = {
   data: Data[] | undefined;
   title: string | undefined;
   description: string | undefined;
@@ -14,11 +18,11 @@ export type PopulationChange = {
   locationId: number | undefined;
 };
 
-export default async function fetchPopulationChange(countryId: number) {
+export default async function fetchPopAgeSexPct(countryId: number) {
   const yearOffset = 10;
   const endYear = new Date().getFullYear();
   const startYear = endYear - yearOffset;
-  const url = `https://population.un.org/dataportalapi/api/v1/data/indicators/50/locations/${countryId}?startYear=${startYear}&endYear=${endYear}&sexes=3&variants=4`;
+  const url = `https://population.un.org/dataportalapi/api/v1/data/indicators/71/locations/${countryId}?startYear=${startYear}&endYear=${endYear}&sexes=1,2&variants=4`;
 
   const res = await fetch(url, {
     headers: {
@@ -35,13 +39,17 @@ export default async function fetchPopulationChange(countryId: number) {
 
   const response = await res.json();
 
-  const populationChange = response.data.map((c: Data) => ({
+  const popAgeSexPct = response.data.map((c: Data) => ({
     indicator: c.indicator,
     timeLabel: c.timeLabel,
-    value: parseInt(c.value.toString()),
+    ageLabel: c.ageLabel,
+    ageStart: c.ageStart,
+    sexLabel: c.sexLabel,
+    sexId: c.sexId,
+    value: parseFloat(c.value.toString()),
   }));
   return {
-    data: populationChange,
+    data: popAgeSexPct,
     title: response.data[0]?.indicator,
     description: response.data[0]?.indicatorDisplayName,
     location: response.data[0]?.location,

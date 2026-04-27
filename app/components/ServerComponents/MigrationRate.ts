@@ -15,7 +15,10 @@ export type MigrationRate = {
 };
 
 export default async function fetchMigrationRate(countryId: number) {
-  const url = `https://population.un.org/dataportalapi/api/v1/data/indicators/66/locations/${countryId}?startYear=2016&endYear=2026&sexes=3&variants=4`;
+  const yearOffset = 10;
+  const endYear = new Date().getFullYear();
+  const startYear = endYear - yearOffset;
+  const url = `https://population.un.org/dataportalapi/api/v1/data/indicators/65/locations/${countryId}?startYear=${startYear}&endYear=${endYear}&sexes=3&variants=4`;
 
   const res = await fetch(url, {
     headers: {
