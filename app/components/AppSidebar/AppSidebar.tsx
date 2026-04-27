@@ -1,6 +1,7 @@
 import { Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarFooter } from "@/components/ui/sidebar"
-import { Home, BarChart, Settings } from "lucide-react"
+import { Home, Earth, Settings, Scale } from "lucide-react"
 import { SidebarHeaderContent } from "./SidebarHeader"
+import Link from "next/link"
 const AppSidebar = () => {
     return (
         <Sidebar variant="floating" collapsible="icon" >
@@ -10,24 +11,30 @@ const AppSidebar = () => {
             <SidebarContent>
                 <SidebarMenu className="flex flex-col mx-2 my-3 gap-4">
                     <SidebarMenuItem>
-                        <SidebarMenuButton>
-                            <Home />
-                            <span className="max-md:text-lg">Home</span>
-                        </SidebarMenuButton>
+                        <Link href="/">
+                            <SidebarMenuButton>
+                                <Home />
+                                <span className="max-md:text-lg">Home</span>
+                            </SidebarMenuButton>
+                        </Link>
                     </SidebarMenuItem>
 
                     <SidebarMenuItem>
-                        <SidebarMenuButton>
-                            <BarChart />
-                            <span className="max-md:text-lg">World</span>
-                        </SidebarMenuButton>
+                        <Link href="/world">
+                            <SidebarMenuButton>
+                                <Earth />
+                                <span className="max-md:text-lg">World</span>
+                            </SidebarMenuButton>
+                        </Link>
                     </SidebarMenuItem>
 
                     <SidebarMenuItem>
-                        <SidebarMenuButton>
-                            <BarChart />
-                            <span className="max-md:text-lg">Compare</span>
-                        </SidebarMenuButton>
+                        <Link href="/compare">
+                            <SidebarMenuButton>
+                                <Scale />
+                                <span className="max-md:text-lg">Compare</span>
+                            </SidebarMenuButton>
+                        </Link>
                     </SidebarMenuItem>
 
                 </SidebarMenu>
