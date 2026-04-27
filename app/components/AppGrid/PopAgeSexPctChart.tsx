@@ -1,9 +1,10 @@
 "use client"
 
 import { useMemo } from "react"
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Label } from "recharts"
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Label, Legend } from "recharts"
 import type { PopAgeSexPct } from "../ServerComponents/PopAgeSexPct"
 import { InfoTitle } from "./AppHoverCard"
+import { Bold } from "lucide-react"
 
 type PyramidDatum = {
     ageGroup: string;
@@ -11,11 +12,19 @@ type PyramidDatum = {
     female: number;
 }
 
+type LegendItem = {
+    value?: string;
+}
+
 const extractYear = (timeLabel?: string) => {
     if (!timeLabel) return -1
     const match = timeLabel.match(/\d{4}/)
     return match ? Number(match[0]) : -1
 }
+
+const formatPercent = (value: unknown) => `${Math.abs(Number(value)).toFixed(1)}%`
+
+const itemSorter = (item: LegendItem) => (item.value === "Male" ? 0 : 1)
 
 const PopAgeSexPctChart = ({ data, description }: PopAgeSexPct) => {
     const pyramidData = useMemo<PyramidDatum[]>(() => {
@@ -73,13 +82,15 @@ const PopAgeSexPctChart = ({ data, description }: PopAgeSexPct) => {
     }, [data])
 
     return (
-        <div className="flex flex-col items-center border bg-white p-2 rounded-lg col-span-3 md:col-span-2 xl:col-span-1 h-lvh xl:h-auto">
+        <div className="flex flex-col items-center bg-white p-2 rounded-lg col-span-3 md:col-span-2 xl:col-span-1 xl:row-span-2 h-80 xl:h-auto">
             <InfoTitle title="Population by Age group and Sex" description={description} />
             <div className="flex-1 w-full mt-2">
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height="100%" minWidth={0}>
                     <BarChart
                         data={pyramidData}
                         layout="vertical"
+                        stackOffset="sign"
+                        barCategoryGap={1}
                         margin={{ top: 10, right: 20, left: 10, bottom: 10 }}
                     >
                         <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border-3)" />
@@ -87,9 +98,9 @@ const PopAgeSexPctChart = ({ data, description }: PopAgeSexPct) => {
                             type="number"
                             tick={{ fontSize: 11 }}
                             stroke="var(--color-text-3)"
-                            tickFormatter={(value) => `${Math.abs(value)}%`}
+                            tickFormatter={formatPercent}
                         >
-                            <Label value="Population (%)" offset={-2} className="font-semibold text-xs" position="insideBottom" fill="var(--color-text-3)" />
+                            <Label value="% of total population" offset={-2} className="font-semibold text-xs" position="insideBottom" fill="var(--color-text-3)" />
                         </XAxis>
                         <YAxis
                             type="category"
@@ -114,10 +125,27 @@ const PopAgeSexPctChart = ({ data, description }: PopAgeSexPct) => {
                                 borderColor: "var(--color-border-2)",
                                 borderRadius: "15px",
                             }}
-                            formatter={(value: unknown, name: unknown) => [`${Math.abs(Number(value)).toFixed(2)}%`, name === "male" ? "Male" : "Female"]}
+                            formatter={(value: unknown) => formatPercent(value)}
                         />
-                        <Bar dataKey="male" name="male" fill="var(--color-chart-4)" barSize={14} />
-                        <Bar dataKey="female" name="female" fill="var(--color-chart-1)" barSize={14} />
+                        <Legend itemSorter={itemSorter} verticalAlign="top" align="right" />
+                        <Bar
+                            stackId="age"
+                            dataKey="female"
+                            name="Female"
+                            fill="#ed7485"
+                            radius={[0, 5, 5, 0]}
+                            barSize={50}
+                            label={{ position: "left", formatter: formatPercent, fill: "var(--color-text-7)", fontSize: 10, fontWeight: 600 }}
+                        />
+                        <Bar
+                            stackId="age"
+                            dataKey="male"
+                            name="Male"
+                            fill="#6ea1c7"
+                            radius={[0, 5, 5, 0]}
+                            barSize={50}
+                            label={{ position: "left", formatter: formatPercent, fill: "var(--color-text-7)", fontSize: 10, fontWeight: 600 }}
+                        />
                     </BarChart>
                 </ResponsiveContainer>
             </div>

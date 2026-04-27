@@ -6,9 +6,9 @@ import { InfoTitle } from "./AppHoverCard"
 
 const LifeExpectancyChart = ({ data, description }: LifeExpectancy) => {
     return (
-        <div className="flex flex-col items-center border bg-white p-2 rounded-lg col-span-3 md:col-span-2 xl:col-span-1 h-60 xl:h-auto">
+        <div className="flex flex-col items-center bg-white p-2 rounded-lg col-span-3 md:col-span-2 xl:col-span-1 h-60">
             <InfoTitle title="Life Expectancy" description={description} />
-            <ResponsiveContainer width="100%" height="100%" className="ml-2">
+            <ResponsiveContainer width="100%" height="100%" className="ml-2" minWidth={0}>
                 <LineChart
                     data={data}
                     margin={{

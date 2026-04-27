@@ -19,7 +19,8 @@ export type PopAgeSexPct = {
 };
 
 export default async function fetchPopAgeSexPct(countryId: number) {
-  const yearOffset = 10;
+  const ageGroup = ["0-4", "5-14", "15-24", "25-49", "50+"];
+  const yearOffset = 0;
   const endYear = new Date().getFullYear();
   const startYear = endYear - yearOffset;
   const url = `https://population.un.org/dataportalapi/api/v1/data/indicators/71/locations/${countryId}?startYear=${startYear}&endYear=${endYear}&sexes=1,2&variants=4`;
@@ -38,8 +39,11 @@ export default async function fetchPopAgeSexPct(countryId: number) {
   }
 
   const response = await res.json();
+  const filteredData = response.data.filter((c: Data) =>
+    c.ageLabel ? ageGroup.includes(c.ageLabel) : false
+  );
 
-  const popAgeSexPct = response.data.map((c: Data) => ({
+  const popAgeSexPct = filteredData.map((c: Data) => ({
     indicator: c.indicator,
     timeLabel: c.timeLabel,
     ageLabel: c.ageLabel,
@@ -50,9 +54,9 @@ export default async function fetchPopAgeSexPct(countryId: number) {
   }));
   return {
     data: popAgeSexPct,
-    title: response.data[0]?.indicator,
-    description: response.data[0]?.indicatorDisplayName,
-    location: response.data[0]?.location,
-    locationId: response.data[0]?.locationId,
+    title: filteredData[0]?.indicator,
+    description: filteredData[0]?.indicatorDisplayName,
+    location: filteredData[0]?.location,
+    locationId: filteredData[0]?.locationId,
   };
 }

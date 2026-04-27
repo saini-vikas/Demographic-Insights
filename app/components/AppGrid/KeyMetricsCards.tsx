@@ -62,7 +62,7 @@ const changeColorClass = (changePct: number | null) => {
 
 const MetricCard = ({ label, value, changePct }: MetricCardProps) => {
     return (
-        <div className="flex-1 rounded-lg bg-white border h-full py-3 px-5 flex flex-col gap-2">
+        <div className="flex-1 rounded-lg bg-white h-full py-3 px-5 flex flex-col gap-2">
             <p className="text-sm lg:text-xs text-muted-foreground">{label}</p>
             <p className="text-xl font-semibold text-foreground leading-tight">{value}</p>
             <p className={`text-xs font-medium ${changeColorClass(changePct)}`}>YoY: {formatChange(changePct)}</p>

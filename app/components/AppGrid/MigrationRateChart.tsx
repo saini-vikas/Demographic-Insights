@@ -18,11 +18,11 @@ const MigrationRateChart = ({ data, description }: MigrationRate) => {
 
     return (
         // Added h-[450px] or similar to ensure ResponsiveContainer has a height to fill
-        <div className="flex flex-col items-center border bg-white p-2 rounded-lg col-span-3 md:col-span-2 xl:col-span-1 h-60 xl:h-auto">
+        <div className="flex flex-col items-center bg-white p-2 rounded-lg col-span-3 md:col-span-2 xl:col-span-1 h-60">
             <InfoTitle title="Migration Rate" description={description} />
 
             <div className="flex-1 w-full mt-4">
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height="100%" minWidth={0}>
                     <BarChart
                         data={data}
                         margin={{

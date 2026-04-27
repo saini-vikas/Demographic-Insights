@@ -178,6 +178,7 @@
   --color-text-1: var(--color-gray-900);
   --color-text-2: var(--color-gray-700);
   --color-text-3: var(--color-gray-600);
+  --color-text-7: var(--color-gray-900);
   --color-text-emphasis-1: #bf2a5c;
 
   --color-border-1: var(--color-gray-500);

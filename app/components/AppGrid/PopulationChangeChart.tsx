@@ -10,9 +10,9 @@ const PopulationChangeChart = ({ data, title, description }: PopulationChange) =
         return `${(value / 1000000).toFixed(1)}M`;
     };
     return (
-        <div className="flex flex-col items-center border bg-white h-60 xl:min-h-84 p-2 rounded-lg col-span-3 lg:col-span-2">
+        <div className="flex flex-col items-center bg-white h-60 xl:h-84 p-2 rounded-lg col-span-3 lg:col-span-2">
             <InfoTitle title={title as string} description={description} />
-            <ResponsiveContainer width="100%" height="100%" className="ml-7">
+            <ResponsiveContainer width="100%" height="100%" className="ml-7" minWidth={0}>
                 <LineChart
                     data={data}
                     margin={{
