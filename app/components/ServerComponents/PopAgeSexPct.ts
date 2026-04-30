@@ -1,5 +1,6 @@
 "use server";
-
+import fetchIndicators from "./Indicator";
+import { Indicator } from "./Indicator";
 export type Data = {
   indicator: string;
   timeLabel: string;
@@ -13,17 +14,20 @@ export type Data = {
 export type PopAgeSexPct = {
   data: Data[] | undefined;
   title: string | undefined;
+  topicName: string | undefined;
   description: string | undefined;
   location: string | undefined;
   locationId: number | undefined;
 };
 
 export default async function fetchPopAgeSexPct(countryId: number) {
+  const indicatorId = 71;
+  const indicator: Indicator = await fetchIndicators(indicatorId);
   const ageGroup = ["0-4", "5-14", "15-24", "25-49", "50+"];
   const yearOffset = 0;
   const endYear = new Date().getFullYear();
   const startYear = endYear - yearOffset;
-  const url = `https://population.un.org/dataportalapi/api/v1/data/indicators/71/locations/${countryId}?startYear=${startYear}&endYear=${endYear}&sexes=1,2&variants=4`;
+  const url = `https://population.un.org/dataportalapi/api/v1/data/indicators/${indicatorId}/locations/${countryId}?startYear=${startYear}&endYear=${endYear}&sexes=1,2&variants=4`;
 
   const res = await fetch(url, {
     headers: {
@@ -43,6 +47,10 @@ export default async function fetchPopAgeSexPct(countryId: number) {
     c.ageLabel ? ageGroup.includes(c.ageLabel) : false,
   );
 
+  if (!indicator) {
+    throw new Error("Failed to fetch indicators");
+  }
+
   const popAgeSexPct = filteredData.map((c: Data) => ({
     indicator: c.indicator,
     timeLabel: c.timeLabel,
@@ -55,7 +63,8 @@ export default async function fetchPopAgeSexPct(countryId: number) {
   return {
     data: popAgeSexPct,
     title: filteredData[0]?.indicator,
-    description: filteredData[0]?.indicatorDisplayName,
+    topicName: indicator.topicName,
+    description: indicator.description,
     location: filteredData[0]?.location,
     locationId: filteredData[0]?.locationId,
   };

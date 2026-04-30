@@ -26,7 +26,7 @@ const formatPercent = (value: unknown) => `${Math.abs(Number(value)).toFixed(1)}
 
 const itemSorter = (item: LegendItem) => (item.value === "Male" ? 0 : 1)
 
-const PopAgeSexPctChart = ({ data, description }: PopAgeSexPct) => {
+const PopAgeSexPctChart = ({ data, description, topicName }: PopAgeSexPct) => {
     const pyramidData = useMemo<PyramidDatum[]>(() => {
         if (!data || data.length === 0) return []
 
@@ -83,7 +83,7 @@ const PopAgeSexPctChart = ({ data, description }: PopAgeSexPct) => {
 
     return (
         <div className="flex flex-col items-center bg-white p-2 dark:bg-gray-800 rounded-lg col-span-3 md:col-span-2 xl:col-span-1 xl:row-span-2 lg:order-3 2xl:order-none h-80 2xl:h-auto">
-            <InfoTitle title="Population by Age group and Sex" description={description} />
+            <InfoTitle title="Population by Age group and Sex" description={description} topicName={topicName as string} />
             <div className="flex-1 w-full mt-2">
                 <ResponsiveContainer width="100%" height="100%" minWidth={0}>
                     <BarChart

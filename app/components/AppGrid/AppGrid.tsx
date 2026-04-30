@@ -48,7 +48,6 @@ interface AppGridProps {
     selectedCountry: Country | null
 }
 const AppGrid = ({ selectedCountry }: AppGridProps) => {
-    console.log("Selected Country in AppGrid:", selectedCountry?.id, selectedCountry?.name) // Debug log
     const [data, setData] = useState<Charts | null>(null)
     const [loading, setLoading] = useState(false)
 
@@ -107,11 +106,11 @@ const AppGrid = ({ selectedCountry }: AppGridProps) => {
 
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-5 w-full py-3 h-auto'>
-            <MigrationRateChart data={data.MigrationRate?.data} title={data.MigrationRate?.title} description={data.MigrationRate?.description} location={data.MigrationRate?.location} locationId={data.MigrationRate?.locationId} />
-            <LifeExpectancyChart data={data.LifeExpectancy?.data} title={data.LifeExpectancy?.title} description={data.LifeExpectancy?.description} location={data.LifeExpectancy?.location} locationId={data.LifeExpectancy?.locationId} />
-            <PopulationDensityChart data={data.PopulationDensity?.data} title={data.PopulationDensity?.title} description={data.PopulationDensity?.description} location={data.PopulationDensity?.location} locationId={data.PopulationDensity?.locationId} />
-            <PopulationChangeChart data={data.PopulationChange?.data} title={data.PopulationChange?.title} description={data.PopulationChange?.description} location={data.PopulationChange?.location} locationId={data.PopulationChange?.locationId} />
-            <PopAgeSexPctChart data={data.PopAgeSexPct?.data} title={data.PopAgeSexPct?.title} description={data.PopAgeSexPct?.description} location={data.PopAgeSexPct?.location} locationId={data.PopAgeSexPct?.locationId} />
+            <MigrationRateChart data={data.MigrationRate?.data} title={data.MigrationRate?.title} description={data.MigrationRate?.description} location={data.MigrationRate?.location} locationId={data.MigrationRate?.locationId} topicName={data.MigrationRate?.topicName} />
+            <LifeExpectancyChart data={data.LifeExpectancy?.data} title={data.LifeExpectancy?.title} description={data.LifeExpectancy?.description} location={data.LifeExpectancy?.location} locationId={data.LifeExpectancy?.locationId} topicName={data.LifeExpectancy?.topicName} />
+            <PopulationDensityChart data={data.PopulationDensity?.data} title={data.PopulationDensity?.title} description={data.PopulationDensity?.description} location={data.PopulationDensity?.location} locationId={data.PopulationDensity?.locationId} topicName={data.PopulationDensity?.topicName} />
+            <PopulationChangeChart data={data.PopulationChange?.data} title={data.PopulationChange?.title} description={data.PopulationChange?.description} location={data.PopulationChange?.location} locationId={data.PopulationChange?.locationId} topicName={data.PopulationChange?.topicName} />
+            <PopAgeSexPctChart data={data.PopAgeSexPct?.data} title={data.PopAgeSexPct?.title} description={data.PopAgeSexPct?.description} location={data.PopAgeSexPct?.location} locationId={data.PopAgeSexPct?.locationId} topicName={data.PopAgeSexPct?.topicName} />
             <KeyMetricsCards
                 totalPopulation={data.TotalPopulation}
                 totalDeath={data.TotalDeath}

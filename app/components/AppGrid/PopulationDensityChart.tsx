@@ -4,10 +4,10 @@ import { AreaChart, Area, XAxis, YAxis, Label, Tooltip, ResponsiveContainer, Car
 import type { PopulationDensity } from "../ServerComponents/PopulationDensity"
 import { InfoTitle } from "./AppHoverCard"
 
-const PopulationDensityChart = ({ data, title, description }: PopulationDensity) => {
+const PopulationDensityChart = ({ data, title, description, topicName }: PopulationDensity) => {
     return (
         <div className="flex flex-col items-center bg-white dark:bg-gray-800 p-2 rounded-lg lg:order-2 lg:h-80 2xl:order-none col-span-3 md:col-span-2 xl:col-span-1 h-60 2xl:h-60">
-            <InfoTitle title={title as string} description={description} />
+            <InfoTitle title={title as string} description={description} topicName={topicName as string} />
             <div className="flex-1 w-full mt-4">
                 <ResponsiveContainer width="100%" height="100%" minWidth={0}>
                     <AreaChart

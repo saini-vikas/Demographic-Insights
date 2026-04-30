@@ -10,8 +10,6 @@ interface AppHeaderProps {
 
 const AppHeader = ({ countries }: AppHeaderProps) => {
     const [selectedCountry, setSelectedCountry] = useState<Country | null>(countries[33])
-    console.log("Selected Country in AppHeader:", selectedCountry?.id, selectedCountry?.name) // Debug log
-
     const handleCountryChange = (name: string) => {
         const countryObject = countries.find(c => c.name === name) || null
         setSelectedCountry(countryObject)

@@ -1,5 +1,6 @@
 "use server";
-
+import fetchIndicators from "./Indicator";
+import { Indicator } from "./Indicator";
 export type Data = {
   indicator: string;
   timeLabel: string;
@@ -9,17 +10,22 @@ export type Data = {
 export type LifeExpectancy = {
   data: Data[] | undefined;
   title: string | undefined;
+  topicName: string | undefined;
   description: string | undefined;
   location: string | undefined;
   locationId: number | undefined;
 };
 
 export default async function fetchLifeExpectancy(countryId: number) {
+  const indicatorId = 61;
   const yearOffset = 10;
   const endYear = new Date().getFullYear();
   const startYear = endYear - yearOffset;
-  const url = `https://population.un.org/dataportalapi/api/v1/data/indicators/61/locations/${countryId}?startYear=${startYear}&endYear=${endYear}&sexes=3&variants=4`;
+  const url = `https://population.un.org/dataportalapi/api/v1/data/indicators/${indicatorId}/locations/${countryId}?startYear=${startYear}&endYear=${endYear}&sexes=3&variants=4`;
 
+  const indicator: Indicator = await fetchIndicators(indicatorId);
+
+  
   const res = await fetch(url, {
     headers: {
       Authorization: `Bearer ${process.env.API_KEY}`,
@@ -30,10 +36,13 @@ export default async function fetchLifeExpectancy(countryId: number) {
   });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch total population data");
+    throw new Error("Failed to fetch Life Expectancy data");
   }
-
   const response = await res.json();
+
+  if (!indicator) {
+    throw new Error("Failed to fetch indicators");
+  }
 
   const lifeExpectancy = response.data.map((c: Data) => ({
     indicator: c.indicator,
@@ -43,7 +52,8 @@ export default async function fetchLifeExpectancy(countryId: number) {
   return {
     data: lifeExpectancy,
     title: response.data[0]?.indicator,
-    description: response.data[0]?.indicatorDisplayName,
+    topicName: indicator.topicName,
+    description: indicator.description,
     location: response.data[0]?.location,
     locationId: response.data[0]?.locationId,
   };

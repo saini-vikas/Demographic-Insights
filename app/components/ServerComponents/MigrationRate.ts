@@ -1,5 +1,6 @@
 "use server";
-
+import fetchIndicators from "./Indicator";
+import { Indicator } from "./Indicator";
 export type Data = {
   indicator: string;
   timeLabel: string;
@@ -9,6 +10,7 @@ export type Data = {
 export type MigrationRate = {
   data: Data[] | undefined;
   title: string | undefined;
+  topicName: string | undefined;
   description: string | undefined;
   location: string | undefined;
   locationId: number | undefined;
@@ -16,9 +18,11 @@ export type MigrationRate = {
 
 export default async function fetchMigrationRate(countryId: number) {
   const yearOffset = 10;
+  const indicatorId = 65;
+  const indicator: Indicator = await fetchIndicators(indicatorId);
   const endYear = new Date().getFullYear();
   const startYear = endYear - yearOffset;
-  const url = `https://population.un.org/dataportalapi/api/v1/data/indicators/65/locations/${countryId}?startYear=${startYear}&endYear=${endYear}&sexes=3&variants=4`;
+  const url = `https://population.un.org/dataportalapi/api/v1/data/indicators/${indicatorId}/locations/${countryId}?startYear=${startYear}&endYear=${endYear}&sexes=3&variants=4`;
 
   const res = await fetch(url, {
     headers: {
@@ -40,10 +44,15 @@ export default async function fetchMigrationRate(countryId: number) {
     timeLabel: c.timeLabel,
     value: parseFloat(c.value.toString()),
   }));
+
+  if (!indicator) {
+    throw new Error("Failed to fetch indicators");
+  }
   return {
     data: migrationRate,
     title: response.data[0]?.indicator,
-    description: response.data[0]?.indicatorDisplayName,
+    topicName: indicator.topicName,
+    description: indicator.description,
     location: response.data[0]?.location,
     locationId: response.data[0]?.locationId,
   };

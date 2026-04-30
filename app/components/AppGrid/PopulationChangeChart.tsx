@@ -4,14 +4,14 @@ import { BarChart, Bar, XAxis, YAxis, Label, Tooltip, ResponsiveContainer, Carte
 import type { PopulationChange } from '../ServerComponents/PopulationChange';
 import { InfoTitle } from './AppHoverCard';
 
-const PopulationChangeChart = ({ data, title, description }: PopulationChange) => {
+const PopulationChangeChart = ({ data, title, description, topicName }: PopulationChange) => {
 
     const formatYAxis = (value: number) => {
         return `${(value / 1000000).toFixed(1)}M`;
     };
     return (
         <div className="flex flex-col items-center bg-white dark:bg-gray-800 h-60 xl:h-84 p-2 rounded-lg col-span-3 md:col-span-2">
-            <InfoTitle title={title as string} description={description} />
+            <InfoTitle title={title as string} description={description} topicName={topicName as string} />
             <ResponsiveContainer width="100%" height="100%" minWidth={0}>
                 <BarChart
                     data={data}

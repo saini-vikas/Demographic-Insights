@@ -13,13 +13,13 @@ import {
 import type { MigrationRate } from '../ServerComponents/MigrationRate';
 import { InfoTitle } from './AppHoverCard';
 
-const MigrationRateChart = ({ data, description }: MigrationRate) => {
+const MigrationRateChart = ({ data, description, topicName }: MigrationRate) => {
     const formatMillions = (value: number) => `${(value / 1000).toFixed(0)}K`
 
     return (
         // Added h-[450px] or similar to ensure ResponsiveContainer has a height to fill
         <div className="flex flex-col items-center bg-white dark:bg-gray-800 p-2 rounded-lg col-span-3 md:col-span-2 xl:col-span-1 h-60">
-            <InfoTitle title="Migration Rate" description={description} />
+            <InfoTitle title="Migration Rate" description={description} topicName={topicName as string} />
 
             <div className="flex-1 w-full mt-4">
                 <ResponsiveContainer width="100%" height="100%" minWidth={0}>
