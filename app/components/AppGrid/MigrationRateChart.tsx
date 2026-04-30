@@ -81,7 +81,7 @@ const MigrationRateChart = ({ data, description }: MigrationRate) => {
                             type="monotone"
                             dataKey="value"
                             strokeWidth={3}
-                            stroke="var(--color-chart-1)"
+                            stroke="var(--color-chart-8)"
                             dot={{
                                 fill: 'var(--color-surface-base)',
                                 r: 4,

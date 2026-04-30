@@ -46,7 +46,7 @@ const PopulationChangeChart = ({ data, title, description }: PopulationChange) =
                     <legend />
                     <Bar
                         dataKey="value"
-                        fill="var(--color-chart-1)"
+                        fill="var(--color-chart-6)"
                         radius={[5, 5, 0, 0]}
                         barSize={50}
                     />

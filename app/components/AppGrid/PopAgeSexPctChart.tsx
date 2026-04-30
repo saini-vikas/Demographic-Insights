@@ -136,7 +136,7 @@ const PopAgeSexPctChart = ({ data, description }: PopAgeSexPct) => {
                             stackId="age"
                             dataKey="female"
                             name="Female"
-                            fill="#ac33a8ff"
+                            fill="var(--color-chart-5)"
                             radius={[0, 5, 5, 0]}
                             barSize={50}
                             label={{ position: "left", formatter: formatPercent, fill: "var(--color-text-7)", fontSize: 10, fontWeight: 600 }}
@@ -145,7 +145,7 @@ const PopAgeSexPctChart = ({ data, description }: PopAgeSexPct) => {
                             stackId="age"
                             dataKey="male"
                             name="Male"
-                            fill="#3863d0ff"
+                            fill="var(--color-chart-7)"
                             radius={[0, 5, 5, 0]}
                             barSize={70}
                             label={{ position: "left", formatter: formatPercent, fill: "var(--color-text-7)", fontSize: 10, fontWeight: 600 }}

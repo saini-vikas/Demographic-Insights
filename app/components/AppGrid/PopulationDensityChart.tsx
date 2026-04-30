@@ -37,9 +37,9 @@ const PopulationDensityChart = ({ data, title, description }: PopulationDensity)
                         <Area
                             type="monotone"
                             dataKey="value"
-                            stroke="var(--color-chart-3)"
+                            stroke="var(--color-chart-5)"
                             strokeWidth={3}
-                            fill="var(--color-chart-3)"
+                            fill="var(--color-chart-5)"
                             fillOpacity={0.35}
                             dot={{ fill: "var(--color-surface-base)", r: 4 }}
                             activeDot={{ r: 5, stroke: "var(--color-surface-base)" }}

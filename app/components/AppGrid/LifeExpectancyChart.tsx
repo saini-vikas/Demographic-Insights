@@ -38,7 +38,7 @@ const LifeExpectancyChart = ({ data, description }: LifeExpectancy) => {
                         type="monotone"
                         dataKey="value"
                         strokeWidth={3}
-                        stroke="var(--color-chart-2)"
+                        stroke="var(--color-chart-7)"
                         dot={{ fill: "var(--color-surface-base)", r: 4 }}
                         activeDot={{ r: 5, stroke: "var(--color-surface-base)" }}
                     />

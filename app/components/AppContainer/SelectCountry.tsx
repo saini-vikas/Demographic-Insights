@@ -22,7 +22,7 @@ interface SelectCountryProps {
 
 export function SelectCountry({ countries, selectedCountry, setSelectedCountry }: SelectCountryProps) {
     return (
-        <Combobox items={countries} value={selectedCountry || "Select a country"} onValueChange={(value) => setSelectedCountry(value ?? "")}>
+        <Combobox items={countries} value={selectedCountry || "Select a country"} onValueChange={(value) => setSelectedCountry(value ?? "")} autoHighlight>
             <ComboboxTrigger
                 render={
                     <Button variant="outline" className="w-60 justify-between font-medium text-md py-3 px-2">
