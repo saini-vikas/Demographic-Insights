@@ -1,7 +1,9 @@
 import { Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarFooter } from "@/components/ui/sidebar"
-import { Home, Earth, Settings, Scale } from "lucide-react"
+import { Home, Earth, Scale } from "lucide-react"
 import { SidebarHeaderContent } from "./SidebarHeader"
 import Link from "next/link"
+import { ThemeToggle } from "./ThemeToggle"
+
 const AppSidebar = () => {
     return (
         <Sidebar variant="floating" collapsible="icon" >
@@ -43,10 +45,7 @@ const AppSidebar = () => {
             <SidebarFooter className="mb-3">
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton>
-                            <Settings />
-                            <span className="max-md:text-lg">Settings</span>
-                        </SidebarMenuButton>
+                        <ThemeToggle />
                     </SidebarMenuItem>
                 </SidebarMenu>
 

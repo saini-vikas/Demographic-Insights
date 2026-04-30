@@ -6,7 +6,7 @@ import { InfoTitle } from "./AppHoverCard"
 
 const PopulationDensityChart = ({ data, title, description }: PopulationDensity) => {
     return (
-        <div className="flex flex-col items-center bg-white p-2 rounded-lg col-span-3 md:col-span-2 xl:col-span-1 h-60">
+        <div className="flex flex-col items-center bg-white dark:bg-gray-800 p-2 rounded-lg lg:order-2 lg:h-80 2xl:order-none col-span-3 md:col-span-2 xl:col-span-1 h-60 2xl:h-60">
             <InfoTitle title={title as string} description={description} />
             <div className="flex-1 w-full mt-4">
                 <ResponsiveContainer width="100%" height="100%" minWidth={0}>
@@ -38,9 +38,11 @@ const PopulationDensityChart = ({ data, title, description }: PopulationDensity)
                             type="monotone"
                             dataKey="value"
                             stroke="var(--color-chart-3)"
-                            strokeWidth={2}
+                            strokeWidth={3}
                             fill="var(--color-chart-3)"
                             fillOpacity={0.35}
+                            dot={{ fill: "var(--color-surface-base)", r: 4 }}
+                            activeDot={{ r: 5, stroke: "var(--color-surface-base)" }}
                         />
                     </AreaChart>
                 </ResponsiveContainer>

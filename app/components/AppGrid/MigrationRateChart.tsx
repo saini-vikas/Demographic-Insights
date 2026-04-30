@@ -1,8 +1,8 @@
 "use client"
 
 import {
-    BarChart, // Changed from LineChart
-    Bar,      // Changed from Line
+    LineChart,
+    Line,
     XAxis,
     YAxis,
     Label,
@@ -14,21 +14,21 @@ import type { MigrationRate } from '../ServerComponents/MigrationRate';
 import { InfoTitle } from './AppHoverCard';
 
 const MigrationRateChart = ({ data, description }: MigrationRate) => {
-    const formatMillions = (value: number) => `${(value / 1000000).toFixed(1)}M`
+    const formatMillions = (value: number) => `${(value / 1000).toFixed(0)}K`
 
     return (
         // Added h-[450px] or similar to ensure ResponsiveContainer has a height to fill
-        <div className="flex flex-col items-center bg-white p-2 rounded-lg col-span-3 md:col-span-2 xl:col-span-1 h-60">
+        <div className="flex flex-col items-center bg-white dark:bg-gray-800 p-2 rounded-lg col-span-3 md:col-span-2 xl:col-span-1 h-60">
             <InfoTitle title="Migration Rate" description={description} />
 
             <div className="flex-1 w-full mt-4">
                 <ResponsiveContainer width="100%" height="100%" minWidth={0}>
-                    <BarChart
+                    <LineChart
                         data={data}
                         margin={{
                             top: 0,
-                            right: 10,
-                            left: 0,
+                            right: 15,
+                            left: 15,
                             bottom: 10,
                         }}
                     >
@@ -57,7 +57,7 @@ const MigrationRateChart = ({ data, description }: MigrationRate) => {
                             <Label
                                 value="Migration Rate"
                                 angle={-90}
-                                offset={10}
+                                offset={0}
                                 position="insideLeft"
                                 className='font-semibold text-xs'
                                 fill="var(--color-text-3)"
@@ -67,24 +67,28 @@ const MigrationRateChart = ({ data, description }: MigrationRate) => {
 
                         <Tooltip
                             cursor={{
-                                fill: 'var(--color-surface-muted)', // Changed stroke to fill for bar hover effect
-                                opacity: 0.4
+                                stroke: 'var(--color-border-2)',
                             }}
                             contentStyle={{
                                 backgroundColor: 'var(--color-surface-raised)',
                                 borderColor: 'var(--color-border-2)',
                                 borderRadius: '15px',
                             }}
-                            formatter={(value: unknown) => [`${(Number(value) / 1000000).toFixed(2)} Million`, 'Migration']}
+                            formatter={(value: unknown) => [`${(Number(value) / 1000).toFixed(2)} Thousand`, 'Migration']}
                         />
 
-                        <Bar
+                        <Line
+                            type="monotone"
                             dataKey="value"
-                            fill="var(--color-chart-1)" // Bars use 'fill' instead of 'stroke'
-                            radius={[4, 4, 0, 0]}       // Optional: adds nice rounded corners to the top of bars
-                            barSize={30}                // Optional: controls the thickness of the bars
+                            strokeWidth={3}
+                            stroke="var(--color-chart-1)"
+                            dot={{
+                                fill: 'var(--color-surface-base)',
+                                r: 4,
+                            }}
+                            activeDot={{ r: 5, stroke: 'var(--color-surface-base)' }}
                         />
-                    </BarChart>
+                    </LineChart>
                 </ResponsiveContainer>
             </div>
         </div>

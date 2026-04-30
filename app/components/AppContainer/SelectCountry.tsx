@@ -10,6 +10,7 @@ import {
     ComboboxTrigger,
     ComboboxValue,
 } from "@/components/ui/combobox"
+import { ChevronsUpDown } from "lucide-react"
 
 interface SelectCountryProps {
     countries: Country[],
@@ -24,12 +25,12 @@ export function SelectCountry({ countries, selectedCountry, setSelectedCountry }
         <Combobox items={countries} value={selectedCountry || "Select a country"} onValueChange={(value) => setSelectedCountry(value ?? "")}>
             <ComboboxTrigger
                 render={
-                    <Button variant="outline" className="w-60 justify-between font-medium text-md py-3! px-4">
+                    <Button variant="outline" className="w-60 justify-between font-medium text-md py-3 px-2">
                         <ComboboxValue placeholder="Select a country" />
+                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
                 }
             />
-
             <ComboboxContent>
                 <ComboboxInput showTrigger={false} className="text-md" placeholder="Search country..." />
                 <ComboboxEmpty className="text-md">No items found.</ComboboxEmpty>

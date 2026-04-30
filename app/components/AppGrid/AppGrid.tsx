@@ -106,7 +106,7 @@ const AppGrid = ({ selectedCountry }: AppGridProps) => {
     if (!data) return <div>Select a country to see details.</div>
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full h-full'>
+        <div className='grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-5 w-full py-3 h-auto'>
             <MigrationRateChart data={data.MigrationRate?.data} title={data.MigrationRate?.title} description={data.MigrationRate?.description} location={data.MigrationRate?.location} locationId={data.MigrationRate?.locationId} />
             <LifeExpectancyChart data={data.LifeExpectancy?.data} title={data.LifeExpectancy?.title} description={data.LifeExpectancy?.description} location={data.LifeExpectancy?.location} locationId={data.LifeExpectancy?.locationId} />
             <PopulationDensityChart data={data.PopulationDensity?.data} title={data.PopulationDensity?.title} description={data.PopulationDensity?.description} location={data.PopulationDensity?.location} locationId={data.PopulationDensity?.locationId} />

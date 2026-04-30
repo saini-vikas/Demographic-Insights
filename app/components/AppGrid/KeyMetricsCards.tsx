@@ -1,4 +1,5 @@
 "use client"
+import { TrendingUp, TrendingDown } from "lucide-react"
 
 import type { MedianAge } from "../ServerComponents/MedianAge"
 import type { SexRatio } from "../ServerComponents/SexRatio"
@@ -62,10 +63,16 @@ const changeColorClass = (changePct: number | null) => {
 
 const MetricCard = ({ label, value, changePct }: MetricCardProps) => {
     return (
-        <div className="flex-1 rounded-lg bg-white h-full py-3 px-5 flex flex-col gap-2">
-            <p className="text-sm lg:text-xs text-muted-foreground">{label}</p>
-            <p className="text-xl font-semibold text-foreground leading-tight">{value}</p>
-            <p className={`text-xs font-medium ${changeColorClass(changePct)}`}>YoY: {formatChange(changePct)}</p>
+        <div className="flex-1 rounded-lg bg-white h-full dark:bg-gray-800 py-5 px-4 flex flex-col justify-center gap-2">
+            <p className="text-sm lg:text-xs dark:text-gray-300 text-muted-foreground">{label}</p>
+            <p className="text-2xl  dark:text-white font-semibold text-foreground leading-tight">{value}</p>
+            <div className={`flex items-center text-xs font-medium ${changeColorClass(changePct)}`}>
+                <span>YoY: {formatChange(changePct)}</span>
+                &nbsp;
+                {changePct !== null && (
+                    changePct >= 0 ? <TrendingUp className="w-4 h-4 ml-1" /> : <TrendingDown className="w-4 h-4 ml-1" />
+                )}
+            </div>
         </div>
     )
 }
@@ -82,7 +89,7 @@ const KeyMetricsCards = ({ totalPopulation, totalDeath, medianAge, sexRatio }: K
     const sexRatioChange = computeYoYChange(sexRatioPoints.latest?.value, sexRatioPoints.previous?.value)
 
     return (
-        <div className="col-span-3 md:col-span-2 grid grid-cols-2 xl:grid-cols-4 gap-4 items-center h-60 xl:h-auto">
+        <div className="col-span-3 md:col-span-2 grid grid-cols-2 2xl:grid-cols-4 gap-4 items-center h-60 xl:h-auto">
             <MetricCard
                 label="Total Population"
                 value={formatMainValue("Total Population", totalPopulationPoints.latest?.value)}

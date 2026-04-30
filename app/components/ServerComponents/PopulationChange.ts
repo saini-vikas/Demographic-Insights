@@ -15,7 +15,7 @@ export type PopulationChange = {
 };
 
 export default async function fetchPopulationChange(countryId: number) {
-  const yearOffset = 10;
+  const yearOffset = 15;
   const endYear = new Date().getFullYear();
   const startYear = endYear - yearOffset;
   const url = `https://population.un.org/dataportalapi/api/v1/data/indicators/50/locations/${countryId}?startYear=${startYear}&endYear=${endYear}&sexes=3&variants=4`;

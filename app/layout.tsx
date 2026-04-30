@@ -5,8 +5,7 @@ import "./globals.css";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import AppSidebar from "./components/AppSidebar/AppSidebar";
 import { MobileSidebarTrigger } from "./components/AppSidebar/MobileSidebarTrigger";
-
-
+import { ThemeProvider } from "./components/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,9 +28,15 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} antialiased`}
     >
-      <body className="flex bg-[#f0f4f8]">
-        <SidebarProvider>
-          <TooltipProvider>
+      <body className="flex bg-[#f0f4f8] dark:bg-background">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SidebarProvider>
+            <TooltipProvider>
             <div className="fixed left-3 top-3  flex flex-row justify-center items-center gap-5 md:hidden">
               <MobileSidebarTrigger />
             </div>
@@ -41,6 +46,7 @@ export default function RootLayout({
             </main>
           </TooltipProvider>
         </SidebarProvider>
+        </ThemeProvider>
       </body>
     </html >
   );

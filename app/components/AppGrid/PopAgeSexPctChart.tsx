@@ -82,7 +82,7 @@ const PopAgeSexPctChart = ({ data, description }: PopAgeSexPct) => {
     }, [data])
 
     return (
-        <div className="flex flex-col items-center bg-white p-2 rounded-lg col-span-3 md:col-span-2 xl:col-span-1 xl:row-span-2 h-80 xl:h-auto">
+        <div className="flex flex-col items-center bg-white p-2 dark:bg-gray-800 rounded-lg col-span-3 md:col-span-2 xl:col-span-1 xl:row-span-2 lg:order-3 2xl:order-none h-80 2xl:h-auto">
             <InfoTitle title="Population by Age group and Sex" description={description} />
             <div className="flex-1 w-full mt-2">
                 <ResponsiveContainer width="100%" height="100%" minWidth={0}>
@@ -100,7 +100,7 @@ const PopAgeSexPctChart = ({ data, description }: PopAgeSexPct) => {
                             stroke="var(--color-text-3)"
                             tickFormatter={formatPercent}
                         >
-                            <Label value="% of total population" offset={-2} className="font-semibold text-xs" position="insideBottom" fill="var(--color-text-3)" />
+                            <Label value="% Population" offset={-2} className="font-semibold text-xs" position="insideBottom" fill="var(--color-text-3)" />
                         </XAxis>
                         <YAxis
                             type="category"
@@ -120,6 +120,10 @@ const PopAgeSexPctChart = ({ data, description }: PopAgeSexPct) => {
                             />
                         </YAxis>
                         <Tooltip
+                            cursor={{
+                                fill: 'var(--color-surface-muted)',
+                                opacity: 0.4
+                            }}
                             contentStyle={{
                                 backgroundColor: "var(--color-surface-raised)",
                                 borderColor: "var(--color-border-2)",
@@ -132,7 +136,7 @@ const PopAgeSexPctChart = ({ data, description }: PopAgeSexPct) => {
                             stackId="age"
                             dataKey="female"
                             name="Female"
-                            fill="#ed7485"
+                            fill="#ac33a8ff"
                             radius={[0, 5, 5, 0]}
                             barSize={50}
                             label={{ position: "left", formatter: formatPercent, fill: "var(--color-text-7)", fontSize: 10, fontWeight: 600 }}
@@ -141,9 +145,9 @@ const PopAgeSexPctChart = ({ data, description }: PopAgeSexPct) => {
                             stackId="age"
                             dataKey="male"
                             name="Male"
-                            fill="#6ea1c7"
+                            fill="#3863d0ff"
                             radius={[0, 5, 5, 0]}
-                            barSize={50}
+                            barSize={70}
                             label={{ position: "left", formatter: formatPercent, fill: "var(--color-text-7)", fontSize: 10, fontWeight: 600 }}
                         />
                     </BarChart>

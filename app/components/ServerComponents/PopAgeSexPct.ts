@@ -40,7 +40,7 @@ export default async function fetchPopAgeSexPct(countryId: number) {
 
   const response = await res.json();
   const filteredData = response.data.filter((c: Data) =>
-    c.ageLabel ? ageGroup.includes(c.ageLabel) : false
+    c.ageLabel ? ageGroup.includes(c.ageLabel) : false,
   );
 
   const popAgeSexPct = filteredData.map((c: Data) => ({

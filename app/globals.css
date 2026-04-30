@@ -166,8 +166,7 @@
   --z-index-main-nav: 1040;
 }
 
-:root,
-[data-mode="light"] {
+:root {
   color-scheme: light;
 
   /* Semantic colors */
@@ -221,7 +220,7 @@
   --color-code-9: #007070; /* Teal */
 }
 
-[data-mode="dark"] {
+.dark {
   color-scheme: dark;
 
   /* Semantic colors */
@@ -231,7 +230,7 @@
 
   --color-text-1: var(--color-gray-100);
   --color-text-2: var(--color-gray-200);
-  --color-text-3: var(--color-gray-300);
+  --color-text-3: var(--color-gray-200);
   --color-text-emphasis-1: #ff6f97;
 
   --color-border-1: var(--color-gray-400);
