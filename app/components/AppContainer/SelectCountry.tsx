@@ -16,16 +16,17 @@ interface SelectCountryProps {
     countries: Country[],
     selectedCountry: string,
     setSelectedCountry: (country: string) => void
+    className?: string
 }
 
 
 
-export function SelectCountry({ countries, selectedCountry, setSelectedCountry }: SelectCountryProps) {
+export function SelectCountry({ countries, selectedCountry, setSelectedCountry, className }: SelectCountryProps) {
     return (
         <Combobox items={countries} value={selectedCountry || "Select a country"} onValueChange={(value) => setSelectedCountry(value ?? "")} autoHighlight>
             <ComboboxTrigger
                 render={
-                    <Button variant="outline" className="w-60 justify-between font-medium text-lg lg:text-md py-5 lg:py-4 px-2">
+                    <Button variant="outline" className={`${className || 'w-60'} justify-between font-medium text-lg lg:text-md py-5 lg:py-4 px-2`}>
                         <ComboboxValue placeholder="Select a country" />
                         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
