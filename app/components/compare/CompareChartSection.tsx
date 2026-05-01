@@ -20,7 +20,7 @@ export default function CompareChartSection({ indicators, countries }: CompareCh
 
     // Default to two random countries or first two
     const [country1Name, setCountry1Name] = useState<string>(countries[33]?.name || countries[0]?.name || "");
-    const [country2Name, setCountry2Name] = useState<string>(countries[44]?.name || countries[1]?.name || "");
+    const [country2Name, setCountry2Name] = useState<string>(countries[222]?.name || countries[1]?.name || "");
 
     const [chartType, setChartType] = useState<"area" | "bar" | "line" | "pyramid">("area");
     const [startYear, setStartYear] = useState<number>(currentYear - 15);
