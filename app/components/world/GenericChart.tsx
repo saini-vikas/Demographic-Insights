@@ -274,7 +274,7 @@ const GenericChart = ({ data, title, description, topicName, chartType }: Generi
     };
 
     return (
-        <div className="flex flex-col items-center bg-white dark:bg-gray-800 p-4 rounded-lg w-full h-[400px] shadow-sm border border-gray-100 dark:border-gray-700">
+        <div className="flex flex-col items-center bg-white dark:bg-gray-800 p-4 rounded-lg w-full h-[350px] lg:h-[400px] shadow-sm border border-gray-100 dark:border-gray-700">
             <InfoTitle title={title || "Chart"} description={description} topicName={topicName || ""} />
             <div className="flex-1 w-full h-full mt-6">
                 <ResponsiveContainer width="100%" height="100%" minWidth={0}>

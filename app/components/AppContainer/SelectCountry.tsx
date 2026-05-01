@@ -25,7 +25,7 @@ export function SelectCountry({ countries, selectedCountry, setSelectedCountry }
         <Combobox items={countries} value={selectedCountry || "Select a country"} onValueChange={(value) => setSelectedCountry(value ?? "")} autoHighlight>
             <ComboboxTrigger
                 render={
-                    <Button variant="outline" className="w-60 justify-between font-medium text-md py-3 px-2">
+                    <Button variant="outline" className="w-60 justify-between font-medium text-lg lg:text-md py-5 lg:py-4 px-2">
                         <ComboboxValue placeholder="Select a country" />
                         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
