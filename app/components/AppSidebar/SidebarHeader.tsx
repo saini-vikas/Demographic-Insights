@@ -24,11 +24,9 @@ export function SidebarHeaderContent() {
           <PanelLeft className="h-4 w-4" />
         </button>
       )}
-      {open && (
-        <button onClick={() => setOpenMobile(false)} className="ml-auto p-2 rounded cursor-pointer hover:bg-muted md:hidden">
-          <X className="h-4 w-4 cursor-pointer" />
-        </button>
-      )}
+      <button onClick={() => setOpenMobile(false)} className="ml-auto p-2 z-50 rounded cursor-pointer hover:bg-muted md:hidden">
+        <X className="h-4 w-4 cursor-pointer" />
+      </button>
     </div>
   )
 }

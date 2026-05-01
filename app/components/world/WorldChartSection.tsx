@@ -4,11 +4,13 @@ import { useState, useEffect } from "react"
 import { Indicator } from "../ServerComponents/Indicator"
 import fetchWorldIndicatorData, { WorldIndicatorDataResult } from "../ServerComponents/WorldIndicatorData"
 import GenericChart from "./GenericChart"
+import AppSpinner from "../AppGrid/AppSpinner"
+import { AreaChart, BarChart, LineChart, Triangle } from "lucide-react"
 
 export default function WorldChartSection({ indicators }: { indicators: Indicator[] }) {
     const currentYear = new Date().getFullYear();
     const [selectedIndicator, setSelectedIndicator] = useState<number>(indicators[0]?.id || 49); // default to first or 49 (total population)
-    const [chartType, setChartType] = useState<"area" | "bar" | "line">("area");
+    const [chartType, setChartType] = useState<"area" | "bar" | "line" | "pyramid">("area");
     const [startYear, setStartYear] = useState<number>(currentYear - 15);
     const [endYear, setEndYear] = useState<number>(currentYear);
     const [chartData, setChartData] = useState<WorldIndicatorDataResult | null>(null);
@@ -45,7 +47,12 @@ export default function WorldChartSection({ indicators }: { indicators: Indicato
                     <select
                         id="indicator-select"
                         value={selectedIndicator}
-                        onChange={(e) => setSelectedIndicator(Number(e.target.value))}
+                        onChange={(e) => {
+                            const val = Number(e.target.value);
+                            setSelectedIndicator(val);
+                            if (val === 71) setChartType("pyramid");
+                            else if (chartType === "pyramid") setChartType("area");
+                        }}
                         className="p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 outline-none focus:ring-2 focus:ring-blue-500 w-full"
                     >
                         {indicators.map((ind) => (
@@ -56,20 +63,44 @@ export default function WorldChartSection({ indicators }: { indicators: Indicato
                     </select>
                 </div>
 
-                <div className="flex flex-col flex-grow md:flex-grow-0 w-full sm:w-[calc(50%-0.5rem)] md:w-48">
-                    <label htmlFor="chart-type-select" className="text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
+                <div className="flex flex-col flex-grow md:flex-grow-0 w-full md:w-auto">
+                    <label className="text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
                         Chart Type
                     </label>
-                    <select
-                        id="chart-type-select"
-                        value={chartType}
-                        onChange={(e) => setChartType(e.target.value as "area" | "bar" | "line")}
-                        className="p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 outline-none focus:ring-2 focus:ring-blue-500 w-full"
-                    >
-                        <option value="area">Area Chart</option>
-                        <option value="bar">Bar Chart</option>
-                        <option value="line">Line Chart</option>
-                    </select>
+                    <div className="flex bg-gray-200 dark:bg-gray-700 rounded-md p-1 gap-1 h-10">
+                        <button
+                            title="Area Chart"
+                            onClick={() => setChartType("area")}
+                            disabled={selectedIndicator === 71}
+                            className={`flex items-center justify-center flex-1 px-3 py-1 text-sm rounded-md transition-colors ${chartType === "area" ? "bg-white dark:bg-gray-800 shadow-sm text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"} ${selectedIndicator === 71 ? "opacity-50 cursor-not-allowed" : ""}`}
+                        >
+                            <AreaChart className="w-4 h-4" />
+                        </button>
+                        <button
+                            title="Bar Chart"
+                            onClick={() => setChartType("bar")}
+                            disabled={selectedIndicator === 71}
+                            className={`flex items-center justify-center flex-1 px-3 py-1 text-sm rounded-md transition-colors ${chartType === "bar" ? "bg-white dark:bg-gray-800 shadow-sm text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"} ${selectedIndicator === 71 ? "opacity-50 cursor-not-allowed" : ""}`}
+                        >
+                            <BarChart className="w-4 h-4" />
+                        </button>
+                        <button
+                            title="Line Chart"
+                            onClick={() => setChartType("line")}
+                            disabled={selectedIndicator === 71}
+                            className={`flex items-center justify-center flex-1 px-3 py-1 text-sm rounded-md transition-colors ${chartType === "line" ? "bg-white dark:bg-gray-800 shadow-sm text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"} ${selectedIndicator === 71 ? "opacity-50 cursor-not-allowed" : ""}`}
+                        >
+                            <LineChart className="w-4 h-4" />
+                        </button>
+                        <button
+                            title="Pyramid Chart"
+                            onClick={() => setChartType("pyramid")}
+                            disabled={selectedIndicator !== 71}
+                            className={`flex items-center justify-center flex-1 px-3 py-1 text-sm rounded-md transition-colors ${chartType === "pyramid" ? "bg-white dark:bg-gray-800 shadow-sm text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"} ${selectedIndicator !== 71 ? "opacity-50 cursor-not-allowed" : ""}`}
+                        >
+                            <Triangle className="w-4 h-4" />
+                        </button>
+                    </div>
                 </div>
 
                 <div className="flex flex-col flex-grow md:flex-grow-0 w-full sm:w-[calc(50%-0.5rem)] md:w-32">
@@ -106,11 +137,7 @@ export default function WorldChartSection({ indicators }: { indicators: Indicato
             </div>
 
             <div className="w-full relative">
-                {loading && (
-                    <div className="absolute inset-0 bg-white/50 dark:bg-gray-800/50 flex items-center justify-center z-10 rounded-lg">
-                        <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-                    </div>
-                )}
+                {loading && <AppSpinner />}
                 {chartData && (
                     <GenericChart
                         data={chartData.data}

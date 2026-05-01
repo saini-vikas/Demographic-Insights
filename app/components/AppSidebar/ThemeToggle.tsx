@@ -23,7 +23,7 @@ export function ThemeToggle() {
           <span className="max-md:text-lg">Settings</span>
         </SidebarMenuButton>
       </DropdownMenuTrigger>
-      <DropdownMenuContent side="top" align="end" className="min-w-[8rem] px-2" onCloseAutoFocus={(e) => e.preventDefault()}>
+      <DropdownMenuContent side="top" align="end" className="min-w-[10rem] px-2 ml-2" onCloseAutoFocus={(e) => e.preventDefault()}>
         <DropdownMenuLabel className="flex items-center gap-2"><SunMedium size={16} />Theme</DropdownMenuLabel>
         <DropdownMenuItem onClick={() => setTheme("light")} className="flex items-center text-md justify-between cursor-pointer">
           Light

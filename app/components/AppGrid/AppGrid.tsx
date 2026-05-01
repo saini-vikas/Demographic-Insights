@@ -27,8 +27,7 @@ import LifeExpectancyChart from "./LifeExpectancyChart"
 import PopulationDensityChart from "./PopulationDensityChart"
 import PopAgeSexPctChart from "./PopAgeSexPctChart"
 import KeyMetricsCards from "./KeyMetricsCards"
-import { Button } from "@/components/ui/button"
-import { Spinner } from "@/components/ui/spinner"
+import AppSpinner from "./AppSpinner"
 
 type Charts = {
     PopulationChange: PopulationChange | null;
@@ -101,7 +100,7 @@ const AppGrid = ({ selectedCountry }: AppGridProps) => {
 
 
 
-    if (loading) return <SpinnerButton />
+    if (loading) return <AppSpinner />
     if (!data) return <div>Select a country to see details.</div>
 
     return (
@@ -124,13 +123,3 @@ const AppGrid = ({ selectedCountry }: AppGridProps) => {
 export default AppGrid
 
 
-export function SpinnerButton() {
-    return (
-        <div className="flex w-full h-full flex-col justify-center items-center gap-4">
-            <Button variant="secondary" disabled size="lg">
-                <Spinner data-icon="inline-start" className="size-8" />
-                Processing
-            </Button>
-        </div>
-    )
-}

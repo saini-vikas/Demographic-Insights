@@ -37,15 +37,15 @@ export default function RootLayout({
         >
           <SidebarProvider>
             <TooltipProvider>
-            <div className="fixed left-3 top-3  flex flex-row justify-center items-center gap-5 md:hidden">
-              <MobileSidebarTrigger />
-            </div>
-            <AppSidebar />
-            <main className="flex w-full h-full">
-              {children}
-            </main>
-          </TooltipProvider>
-        </SidebarProvider>
+              <div className="fixed left-3 top-3 z-50 flex flex-row justify-center items-center gap-5 md:hidden">
+                <MobileSidebarTrigger />
+              </div>
+              <AppSidebar />
+              <main className="flex w-full h-full">
+                {children}
+              </main>
+            </TooltipProvider>
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html >

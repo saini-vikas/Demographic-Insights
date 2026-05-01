@@ -5,8 +5,6 @@ import type { LifeExpectancy } from "../ServerComponents/LifeExpectancy"
 import { InfoTitle } from "./AppHoverCard"
 
 const LifeExpectancyChart = ({ data, description, topicName }: LifeExpectancy) => {
-
-    console.log("topicName", topicName)
     return (
         <div className="flex flex-col items-center bg-white p-2 dark:bg-gray-800 rounded-lg col-span-3 md:col-span-2 xl:col-span-1 h-60">
             <InfoTitle title="Life Expectancy" description={description} topicName={topicName as string} />
