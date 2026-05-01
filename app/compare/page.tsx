@@ -7,8 +7,8 @@ const page = async () => {
     const countries = await fetchCountries()
 
     return (
-        <div className="flex flex-col w-full h-full p-4 mt-12 md:mt-0 lg:p-8 overflow-y-auto">
-            <div className="flex flex-col mb-4">
+        <div className="flex flex-col w-full h-full items-center p-4 mt-12 md:mt-0 lg:p-8 overflow-y-auto">
+            <div className="flex flex-col items-center mb-4">
                 <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
                     Compare Countries
                 </h1>

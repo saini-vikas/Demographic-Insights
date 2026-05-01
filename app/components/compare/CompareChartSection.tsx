@@ -62,7 +62,7 @@ export default function CompareChartSection({ indicators, countries }: CompareCh
     }, [selectedIndicator, country1Name, country2Name, startYear, endYear, countries]);
 
     return (
-        <div className="flex flex-col gap-6 w-full max-w-6xl h-fit mt-6">
+        <div className="flex flex-col gap-6 w-full max-w-7xl h-fit mt-6">
             <div className="flex flex-col gap-4 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-100 dark:border-gray-700">
                 {/* Countries selection row */}
                 <div className="flex flex-col md:flex-row gap-4 items-start md:items-end w-full">

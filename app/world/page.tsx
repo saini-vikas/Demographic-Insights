@@ -7,7 +7,7 @@ const page = async () => {
     const indicators = allIndicators.filter((ind) => ind.id !== 65);
 
     return (
-        <div className="p-4 sm:p-8 w-full max-w-7xl mx-auto flex flex-col items-center">
+        <div className="p-4 sm:p-8 w-full h-full flex flex-col items-center">
             <div className="flex flex-col w-full items-center mb-4 gap-4 mt-12 md:mt-2">
                 <p className="text-2xl font-semibold">
                     World Demographic Insights and Trends

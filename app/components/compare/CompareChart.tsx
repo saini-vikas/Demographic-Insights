@@ -301,7 +301,7 @@ const CompareChart = ({ data1, data2, country1Name, country2Name, chartType }: C
     }
 
     return (
-        <div className="flex flex-col items-center bg-white dark:bg-gray-800 p-4 rounded-lg w-full h-[350px] lg:h-[400px] min-h-[300px] min-w-[300px] shadow-sm border border-gray-100 dark:border-gray-700">
+        <div className="flex flex-col items-center bg-white dark:bg-gray-800 p-4 rounded-lg w-full h-full lg:max-h-[400px] shadow-sm border border-gray-100 dark:border-gray-700">
             <InfoTitle title={title} description={description} topicName={topicName} />
             <div className="flex-1 w-full h-full mt-6 relative">
                 {renderChart()}
