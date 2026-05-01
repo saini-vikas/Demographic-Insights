@@ -38,7 +38,7 @@ export default function WorldChartSection({ indicators }: { indicators: Indicato
     }, [selectedIndicator, startYear, endYear]);
 
     return (
-        <div className="flex flex-col gap-6 w-full max-w-6xl mt-6">
+        <div className="flex flex-col gap-6 w-full max-w-6xl h-fit mt-6">
             <div className="flex flex-col md:flex-row flex-wrap gap-4 items-start md:items-center p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-100 dark:border-gray-700">
                 <div className="flex flex-col flex-grow w-full md:w-auto min-w-[200px]">
                     <label htmlFor="indicator-select" className="text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
@@ -136,7 +136,7 @@ export default function WorldChartSection({ indicators }: { indicators: Indicato
                 </div>
             </div>
 
-            <div className="w-full relative">
+            <div className="w-full relative min-h-[500px] min-w-[80%]">
                 {loading && <AppSpinner />}
                 {chartData && (
                     <GenericChart
