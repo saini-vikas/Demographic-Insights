@@ -8,7 +8,7 @@ export type Indicator = {
   topicName: string;
 };
 
-export default async function fetchIndicators(indicator_id: number) {
+export default async function fetchIndicators(indicator_id?: number) {
   const indicators_list = [60, 72, 49, 54, 50, 58, 71, 65, 61, 67];
 
   let res;
