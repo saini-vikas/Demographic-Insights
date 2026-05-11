@@ -1,41 +1,82 @@
-<<<<<<< HEAD
-# Demographic-Insights
-This dashboard provides a high-level visual analysis of global demographic shifts, leveraging the United Nations Population Division API. Built with Next.js and optimized for performance, the application transforms complex datasets into intuitive, interactive time-series visualizations.
-=======
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📊 Demographic Insights
 
-## Getting Started
+A sophisticated web dashboard providing high-level visual analysis of global demographic shifts. Leveraging the **United Nations Population Division API**, this application transforms complex datasets into intuitive, interactive, and high-fidelity visualizations.
 
-First, run the development server:
+![Demographic Insights Banner](https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2070)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+-   **🌍 Global Overview**: Comprehensive insights into world demographic trends, including total population, life expectancy, and growth rates.
+-   **⚖️ Comparative Analysis**: Side-by-side comparison of two countries across multiple indicators (e.g., Fertility Rate, Net Migration, Median Age).
+-   **📈 Dynamic Visualizations**: Interactive time-series charts and population pyramids powered by Recharts.
+-   **🔍 Granular Indicators**: Explore specific demographic metrics with historical data and future projections.
+-   **🌓 Dark Mode Support**: Fully integrated dark and light themes for an optimal viewing experience.
+-   **📱 Responsive Design**: Seamless performance across desktop, tablet, and mobile devices.
+
+## 🚀 Tech Stack
+
+-   **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+-   **Library**: [React 19](https://reactjs.org/)
+-   **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+-   **UI Components**: [shadcn/ui](https://ui.shadcn.com/) / Radix UI
+-   **Charts**: [Recharts](https://recharts.org/)
+-   **Icons**: [Lucide React](https://lucide.dev/)
+-   **API**: [UN Population Division Data Portal](https://population.un.org/dataportal/home)
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+-   Node.js 18.x or later
+-   npm, yarn, pnpm, or bun
+
+### Installation
+
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-username/demographic-insights.git
+    cd demographic-insights
+    ```
+
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+
+3.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
+
+4.  **Open the application**:
+    Navigate to [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 📂 Project Structure
+
+```text
+demographic-insights/
+├── app/                # Next.js App Router (pages, layout, globals)
+│   ├── compare/        # Country comparison feature
+│   ├── world/          # Global demographic overview
+│   ├── components/     # Feature-specific components
+│   └── layout.tsx      # Root layout & providers
+├── components/         # Reusable UI components (shadcn/ui)
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions and API helpers
+├── public/             # Static assets
+└── package.json        # Project metadata and dependencies
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📄 License
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🤝 Acknowledgments
 
-## Learn More
+-   Data provided by the [United Nations Population Division](https://population.un.org/dataportal/home).
+-   Icons by [Lucide](https://lucide.dev/).
+-   Inspiration from modern data visualization dashboards.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
->>>>>>> 3a74852 (Initial commit from Create Next App)
+Built with ❤️ by [Vikas Saini](https://github.com/vikassaini)
