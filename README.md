@@ -1,8 +1,7 @@
-# 📊 Demographic Insights
+## 📊 Demographic Insights
 
 A sophisticated web dashboard providing high-level visual analysis of global demographic shifts. Leveraging the **United Nations Population Division API**, this application transforms complex datasets into intuitive, interactive, and high-fidelity visualizations.
 
-![Demographic Insights Banner](https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2070)
 
 ## ✨ Features
 
